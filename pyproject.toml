@@ -1,0 +1,22 @@
+# Tooling config for the whole workspace (packages keep their own setup.py for colcon).
+
+[tool.black]
+line-length = 110
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = ["build", "install", "log"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "ANN", "D"]
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/test/**" = ["D", "ANN"]
+"**/setup.py" = ["D"]
+
+[tool.pytest.ini_options]
+testpaths = ["src"]
+addopts = "-ra --strict-markers"

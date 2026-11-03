@@ -1,0 +1,33 @@
+# colcon workspace
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.venv/
+venv/
+
+# Gazebo / ROS artifacts
+*.bag
+rosbag2_*/
+*.mcap
+core
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local env
+.env
