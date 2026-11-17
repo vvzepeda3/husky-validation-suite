@@ -1,0 +1,30 @@
+# Husky waypoint controller parameters.
+# Every limit lives here: the node declares parameters without defaults and refuses
+# to start if any are missing or out of range (REQ-IF-006). Allowed ranges are in
+# docs/requirements.md §5. Floats must keep their decimal point (e.g. 20.0).
+waypoint_controller:
+  ros__parameters:
+    # ROS interface
+    namespace: a200_0000                 # robot namespace (REQ-IF-001)
+    odom_topic: platform/odom/filtered   # or platform/odom (REQ-IF-003)
+    cmd_vel_stamped: true                # Jazzy: TwistStamped. Humble: false -> Twist (REQ-IF-002)
+    base_frame_id: base_link             # frame_id on stamped commands
+
+    # Navigation
+    goal_tolerance_m: 0.20               # REQ-NAV-001
+    rotate_in_place_threshold_rad: 0.785 # 45 deg, REQ-NAV-005
+    slowdown_radius_m: 1.0               # REQ-NAV-006
+    heading_gain: 1.5                    # rad/s per rad of heading error, REQ-NAV-004
+
+    # Command limits (must not exceed the A200 caps of 1.0 m/s and 1.0 rad/s)
+    max_linear_speed_mps: 0.5            # REQ-CTL-001
+    max_angular_speed_radps: 0.8         # REQ-CTL-002
+    max_linear_accel_mps2: 0.5           # REQ-CTL-003
+    control_rate_hz: 20.0                # REQ-CTL-005
+
+    # Waypoint validation
+    max_waypoints: 100                   # REQ-WPT-003
+    max_waypoint_range_m: 50.0           # REQ-WPT-004
+
+    # Watchdog (must stay below the platform's 0.5 s command timeout)
+    odom_timeout_s: 0.2                  # REQ-SAFE-003, REQ-SAFE-006

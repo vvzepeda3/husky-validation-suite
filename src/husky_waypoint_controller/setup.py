@@ -1,3 +1,5 @@
+from glob import glob
+
 from setuptools import find_packages, setup
 
 PACKAGE_NAME = "husky_waypoint_controller"
@@ -9,6 +11,8 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", [f"resource/{PACKAGE_NAME}"]),
         (f"share/{PACKAGE_NAME}", ["package.xml"]),
+        (f"share/{PACKAGE_NAME}/config", glob("config/*.yaml")),
+        (f"share/{PACKAGE_NAME}/launch", glob("launch/*.launch.py")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,
@@ -17,5 +21,7 @@ setup(
     description="Waypoint-following controller for the Clearpath Husky.",
     license="MIT",
     tests_require=["pytest"],
-    entry_points={"console_scripts": []},
+    entry_points={
+        "console_scripts": [f"waypoint_controller = {PACKAGE_NAME}.node:main"],
+    },
 )

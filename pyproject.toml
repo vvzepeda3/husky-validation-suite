@@ -19,4 +19,6 @@ ignore = ["D203", "D213"]
 
 [tool.pytest.ini_options]
 testpaths = ["src"]
+# Lets `make unit` import packages straight from src/ without a colcon build
+pythonpath = ["src/husky_waypoint_controller"]
 addopts = "-ra --strict-markers"
