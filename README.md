@@ -2,7 +2,11 @@
 
 Requirements-driven validation of a waypoint-following controller for the Clearpath Husky, in ROS 2 Jazzy and Gazebo Harmonic, run in Docker.
 
-> **Status:** project skeleton. No controller code yet.
+> 🚧 **Status: work in progress.** The pure-Python controller core, the ROS 2 node, draft requirements
+> ([docs/requirements.md](docs/requirements.md)) and design ([docs/design.md](docs/design.md)) are in place,
+> with 73 passing unit tests. Not done yet: the ROS build hasn't been verified in the Jazzy container, and the
+> integration tests, Gazebo simulation tests, CI and traceability matrix haven't been written. Sections marked
+> _TODO_ below are still to be written.
 
 ## Overview
 
